@@ -2,7 +2,7 @@
  temos aqui os codigos e documentos dos laboratorios que foram lançados 
 
 ### links:
-> obs.: o lab 05 é dividido em 3 partes, *5.1, 5,2, 5.3*
+> obs.: o lab 05 é dividido em 3 partes, *5.1, 5.2, 5.3*
 
 |lab |links |
 |---|---|
