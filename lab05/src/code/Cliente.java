@@ -2,13 +2,13 @@ package code;
 
 public class Cliente implements Comparable<Cliente> {
 
-	private String cpf;
+	
 	private String nome;
 	private String email;
 	private String local;
 
-	public Cliente(String cpf, String nome, String email, String local) {
-		this.cpf = cpf;
+	public Cliente( String nome, String email, String local) {
+		
 		this.nome = nome;
 		this.email = email;
 		this.local = local;
@@ -16,6 +16,10 @@ public class Cliente implements Comparable<Cliente> {
 	
 	public void setNome(String novoNome) {
 		this.nome = novoNome;
+	}
+	
+	public String getNome() {
+		return this.nome;
 	}
 	
 	public void setEmail(String novoEmail) {
@@ -26,16 +30,30 @@ public class Cliente implements Comparable<Cliente> {
 		this.local = novoLocal;
 	}
 
+	
+	public void atulalizacaoAtributos(String atributo, String novoValor) {
+		String atualizacao = atributo.toLowerCase().trim();
+		
+		switch (atualizacao) {
+		
+			case "nome":
+				setNome(novoValor);
+				
+			case "email":
+				setEmail(novoValor);
+				
+			case "localizacao":
+				setLocal(novoValor);
+		}
+	}
 
 	public String toString() {
 		return nome + " - " + local + " - " + email;
 	}
 	//https://blog.alura.com.br/ordenando-uma-lista-de-objetos-em-java/
 	
-	@Override
-	public int compareTo(Cliente o) {
-		// ainda ver como isso vai fazer, stack overflow <3 linda jaja te olho
-		return 0;
+	public int compareTo(Cliente c) {
+		return this.nome.compareTo(c.getNome());
 	}
 
 }
