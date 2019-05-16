@@ -31,7 +31,7 @@ public class Cliente implements Comparable<Cliente> {
 	}
 
 	
-	public void atulalizacaoAtributos(String atributo, String novoValor) {
+	public void atulalizaAtributos(String atributo, String novoValor) {
 		String atualizacao = atributo.toLowerCase().trim();
 		
 		switch (atualizacao) {
@@ -44,6 +44,8 @@ public class Cliente implements Comparable<Cliente> {
 				
 			case "localizacao":
 				setLocal(novoValor);
+			default :
+				throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao existe.");
 		}
 	}
 

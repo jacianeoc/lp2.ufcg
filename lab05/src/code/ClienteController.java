@@ -9,13 +9,19 @@ import java.util.Map;
 public class ClienteController {
 
 	private Map<String, Cliente> clientes;
+	private Validacao valida;
 	
 	
 	public ClienteController() {
 		this.clientes = new HashMap<>();
+		valida = new Validacao();
 	}
 	
 	public String cadastraCliente(String cpf, String nome, String email, String local) {
+		valida.validaCpf(cpf);
+		valida.validaNome(nome);
+		valida.validaEmail(email);
+		valida.validaLocal(local);
 		
 		if(clientes.containsKey(cpf)) {
 			throw new IllegalArgumentException("Erro no cadastro do cliente: cliente ja existe.");
@@ -27,6 +33,7 @@ public class ClienteController {
 	}
 	
 	public String exibeCliente(String cpf) {
+		valida.validaCpf(cpf);
 		
 		if(clientes.containsKey(cpf)) {
 			
@@ -62,17 +69,25 @@ public class ClienteController {
 
 	 
 	 public void editaCliente (String cpf , String atributo, String novoValor) {
-		 
+		 valida.validaCpf(cpf); 
+		 // TODO colocar aqui ou jogar isso na validacao para ficar menor isso aqui
+		 if (atributo == null || "".equals(atributo.trim())) {
+			 throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao pode ser vazio ou nulo.");
+		 }
+		 if (novoValor == null || "".equals(novoValor.trim())) {
+			 throw new IllegalArgumentException("Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo.");
+		 }
 		 if (clientes.containsKey(cpf)) {
-			 clientes.get(cpf).atulalizacaoAtributos(atributo, novoValor);
+			 clientes.get(cpf).atulalizaAtributos(atributo, novoValor);
 			 
 		 } else {
 			 throw new IllegalArgumentException("Erro na edicao do cliente: cliente nao existe.");
 		 }
 		 
 	 }
-	 // tem a questão de validar as entradas
+	 
 	 public void removeCliente(String cpf) {
+		 valida.validaCpf(cpf);
 		 
 		 if(clientes.containsKey(cpf)) {
 			 clientes.remove(cpf);
