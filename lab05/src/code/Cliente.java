@@ -48,13 +48,14 @@ public class Cliente implements Comparable<Cliente> {
 				
 			case "localizacao":
 				setLocal(novoValor);
+				
 			default :
 				throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao existe.");
 		}
 	}
 
 	public String toString() {
-		return nome + " - " + local + " - " + email;
+		return this.nome + " - " + this.local + " - " + this.email;
 	}
 	//https://blog.alura.com.br/ordenando-uma-lista-de-objetos-em-java/
 	

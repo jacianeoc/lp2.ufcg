@@ -33,8 +33,10 @@ public class ClienteController {
 	}
 	
 	public String exibeCliente(String cpf) {
-		valida.validaCpf(cpf);
 		
+		if (cpf == null || "".equals(cpf.trim())) {
+			throw new IllegalArgumentException("Erro na exibicao do cliente: cpf nao pode ser vazio ou nulo.");
+		}
 		if(clientes.containsKey(cpf)) {
 			
 			return clientes.get(cpf).toString();
@@ -69,14 +71,19 @@ public class ClienteController {
 
 	 
 	 public void editaCliente (String cpf , String atributo, String novoValor) {
-		 valida.validaCpf(cpf); 
-		
+ 
+		 if (cpf == null || "".equals(cpf.trim())) {
+				throw new IllegalArgumentException("Erro na edicao do cliente: cpf nao pode ser vazio ou nulo.");
+		}
 		 if (atributo == null || "".equals(atributo.trim())) {
 			 throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao pode ser vazio ou nulo.");
 		 }
 		 if (novoValor == null || "".equals(novoValor.trim())) {
 			 throw new IllegalArgumentException("Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo.");
 		 }
+		 if (cpf.equals(atributo.trim())) {
+			 throw new IllegalArgumentException("Erro na edicao do fornecedor: cpf nao pode ser editado.");
+		}
 		 if (clientes.containsKey(cpf)) {
 			 clientes.get(cpf).atulalizaAtributos(atributo, novoValor);
 			 
@@ -87,13 +94,15 @@ public class ClienteController {
 	 }
 	 
 	 public void removeCliente(String cpf) {
-		 valida.validaCpf(cpf);
-		 
+		
+		 if (cpf == null || "".equals(cpf.trim())) {
+				throw new IllegalArgumentException("Erro na remocao do cliente: cpf nao pode ser vazio ou nulo");
+			}
 		 if(clientes.containsKey(cpf)) {
 			 clientes.remove(cpf);
 	
 		 } else {
-			 throw new IllegalArgumentException("Erro na exibicao do cliente: cliente nao existe.");
+			 throw new IllegalArgumentException("Erro na remocao do cliente: cliente nao existe.");
 		 }
 		 
 	 }

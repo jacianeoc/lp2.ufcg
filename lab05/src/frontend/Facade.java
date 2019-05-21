@@ -28,9 +28,8 @@ public class Facade {
 		cc.removeCliente(cpf);
 	}
 	
-	  public static void main(String[] args) { args = new String[] {
-	  "frontend.Facade", "acceptance_test/use_case_1.txt"};
-	  EasyAccept.main(args);
-	  }
-	 
+	public static void main(String[] args) {
+		args = new String[] {"frontend.Facade", "acceptance_test/use_case_1.txt"};
+		EasyAccept.main(args);
+	}
 }

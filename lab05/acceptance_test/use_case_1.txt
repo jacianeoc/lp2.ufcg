@@ -50,8 +50,8 @@ expectError "Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo." 
 expectError "Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo." editaCliente cpf="19418510068" atributo="email" novoValor=
 expectError "Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo." editaCliente cpf="19418510068" atributo="nome" novoValor=""
 expectError "Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo." editaCliente cpf="19418510068" atributo="nome" novoValor=
-expectError "Erro na edicao do cliente: novo valor nao pode ser vazia ou nula." editaCliente cpf="19418510068" atributo="localizacao" novoValor=""
-expectError "Erro na edicao do cliente: novo valor nao pode ser vazia ou nula." editaCliente cpf="19418510068" atributo="localizacao" novoValor=
+expectError "Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo." editaCliente cpf="19418510068" atributo="localizacao" novoValor=""
+expectError "Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo." editaCliente cpf="19418510068" atributo="localizacao" novoValor=
 expectError "Erro na edicao do cliente: cliente nao existe." editaCliente cpf="11122233344" atributo="email" novoValor="lucio_correia@ccc.ufcg.edu.br"
 expectError "Erro na edicao do cliente: cpf nao pode ser vazio ou nulo." editaCliente cpf="" atributo="localizacao" novoValor="Analytics"
 expectError "Erro na edicao do cliente: cpf nao pode ser vazio ou nulo." editaCliente cpf= atributo="localizacao" novoValor="Analytics"
