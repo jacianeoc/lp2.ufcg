@@ -2,16 +2,20 @@ package code;
 
 public class Cliente implements Comparable<Cliente> {
 
-	
+	private Validacao valida;
 	private String nome;
 	private String email;
 	private String local;
 
-	public Cliente( String nome, String email, String local) {
+	public Cliente( String nome, String email, String localizacao) {
+		valida = new Validacao();
+		valida.validaNome(nome);
+		valida.validaEmail(email);
+		valida.validaLocal(localizacao);
 		
 		this.nome = nome;
 		this.email = email;
-		this.local = local;
+		this.local = localizacao;
 	}
 	
 	public void setNome(String novoNome) {
@@ -58,4 +62,5 @@ public class Cliente implements Comparable<Cliente> {
 		return this.nome.compareTo(c.getNome());
 	}
 
+	
 }

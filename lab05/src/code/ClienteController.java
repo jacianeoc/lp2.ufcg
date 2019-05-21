@@ -17,16 +17,16 @@ public class ClienteController {
 		valida = new Validacao();
 	}
 	
-	public String cadastraCliente(String cpf, String nome, String email, String local) {
+	public String cadastraCliente(String cpf, String nome, String email, String localizacao) {
 		valida.validaCpf(cpf);
 		valida.validaNome(nome);
 		valida.validaEmail(email);
-		valida.validaLocal(local);
+		valida.validaLocal(localizacao);
 		
 		if(clientes.containsKey(cpf)) {
 			throw new IllegalArgumentException("Erro no cadastro do cliente: cliente ja existe.");
 		}
-		Cliente c = new Cliente(nome,email,local);
+		Cliente c = new Cliente(nome,email,localizacao);
 		clientes.put(cpf, c);
 		return cpf;
 
@@ -40,7 +40,7 @@ public class ClienteController {
 			return clientes.get(cpf).toString();
 		} else {
 			
-			return "cliente nao cadastrado";
+			throw new IllegalArgumentException("Erro na exibicao do cliente: cliente nao existe.");
 		}
 
 	}
@@ -70,7 +70,7 @@ public class ClienteController {
 	 
 	 public void editaCliente (String cpf , String atributo, String novoValor) {
 		 valida.validaCpf(cpf); 
-		 // TODO colocar aqui ou jogar isso na validacao para ficar menor isso aqui
+		
 		 if (atributo == null || "".equals(atributo.trim())) {
 			 throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao pode ser vazio ou nulo.");
 		 }
@@ -97,5 +97,4 @@ public class ClienteController {
 		 }
 		 
 	 }
-	
 }
