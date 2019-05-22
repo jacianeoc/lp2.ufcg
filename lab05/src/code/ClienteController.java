@@ -72,24 +72,14 @@ public class ClienteController {
 	 
 	 public void editaCliente (String cpf , String atributo, String novoValor) {
  
-		 if (cpf == null || "".equals(cpf.trim())) {
-				throw new IllegalArgumentException("Erro na edicao do cliente: cpf nao pode ser vazio ou nulo.");
-		}
-		 if (atributo == null || "".equals(atributo.trim())) {
-			 throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao pode ser vazio ou nulo.");
-		 }
-		 if (novoValor == null || "".equals(novoValor.trim())) {
-			 throw new IllegalArgumentException("Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo.");
-		 }
-		 if (cpf.equals(atributo.trim())) {
-			 throw new IllegalArgumentException("Erro na edicao do fornecedor: cpf nao pode ser editado.");
-		}
-		 if (clientes.containsKey(cpf)) {
+		valida.validaEditaCliente(cpf, atributo, novoValor);
+		
+		if (clientes.containsKey(cpf)) {
 			 clientes.get(cpf).atulalizaAtributos(atributo, novoValor);
 			 
-		 } else {
+		} else {
 			 throw new IllegalArgumentException("Erro na edicao do cliente: cliente nao existe.");
-		 }
+		}
 		 
 	 }
 	 

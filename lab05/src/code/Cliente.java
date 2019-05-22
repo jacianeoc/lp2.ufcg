@@ -12,7 +12,7 @@ public class Cliente implements Comparable<Cliente> {
 		valida.validaNome(nome);
 		valida.validaEmail(email);
 		valida.validaLocal(localizacao);
-		
+	
 		this.nome = nome;
 		this.email = email;
 		this.local = localizacao;
@@ -42,12 +42,15 @@ public class Cliente implements Comparable<Cliente> {
 		
 			case "nome":
 				setNome(novoValor);
+				break;
 				
 			case "email":
 				setEmail(novoValor);
+				break;
 				
 			case "localizacao":
 				setLocal(novoValor);
+				break;
 				
 			default :
 				throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao existe.");
@@ -63,5 +66,4 @@ public class Cliente implements Comparable<Cliente> {
 		return this.nome.compareTo(c.getNome());
 	}
 
-	
 }
