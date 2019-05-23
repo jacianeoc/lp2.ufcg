@@ -40,6 +40,7 @@ public class FornecedorController {
 			throw new IllegalArgumentException("Erro na exibicao do fornecedor: fornecedor nao existe.");
 		}
 	}
+	
 	private List<Fornecedor> ordenaFornecedores(){
 		List<Fornecedor> listinhaFornecedores = new ArrayList<>(fornecedores.values());
 		Collections.sort(listinhaFornecedores);
@@ -84,6 +85,16 @@ public class FornecedorController {
 			throw new IllegalArgumentException("Erro na remocao do fornecedor: fornecedor nao existe.");
 		}
 		
+	}
+	
+	//TODO validacao para fazer, acho que vou fazer um monte de classe de validacao para tirar essa mundiça daqui 
+	public void adicionaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+		
+		if(fornecedores.containsKey(nomeFornecedor)) {
+			fornecedores.get(nomeFornecedor).cadastraProduto(preco, nomeProduto, descricao);
+		} else {
+			throw new IllegalArgumentException("Erro no cadastro de produto: fornecedor nao existe.");
+		} 
 	}
 
 }
