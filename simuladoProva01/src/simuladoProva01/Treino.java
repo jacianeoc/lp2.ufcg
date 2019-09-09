@@ -26,22 +26,23 @@ public class Treino {
 	public String getStatus() {
 		return this.status;
 	}
+
 	
 	public int GetResistencia() {
 		if ("terminado".equals(status)) {
 			if(this.tempoEsperado > this.tempoGasto) {
-				return 1;	
+				resistencia =  1;	
 			}
 			if(this.tempoEsperado < this.tempoGasto) {
-				return -1;	
+				resistencia = -1; 	
+			}else {
+				resistencia =  0;
 			}
-			if(this.tempoEsperado == this.tempoGasto) {
-				return 0;	
-			}
-			
 		}
+		
 		return resistencia;
-	}
+	}	
+			
 	
 	public String toString() {
 		return this.distancia + "km - " + this.tempoEsperado + " - " + this.descricao;

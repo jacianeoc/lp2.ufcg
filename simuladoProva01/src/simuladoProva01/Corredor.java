@@ -21,7 +21,7 @@ public class Corredor {
 
 	public void cadastraTreino(double distancia, int tempoEsperado, String descricao) {
 		Treino t = new Treino(distancia, tempoEsperado, descricao);
-		this.treinos.add(t);
+		treinos.add(t);
 	} 
 	
 	public void finalizarTreino(int indice, int tempoGasto) {
@@ -42,21 +42,21 @@ public class Corredor {
 
 	public double resistenciaCorredor() {
 		int geralResistencia = 0;
-		int treinosFinalizados = 0;
+		int cont = 0;
 		
-		for(Treino t : treinos) {
-			if("terminado".equals(t.getStatus())) {
-				t.GetResistencia();
-				treinosFinalizados++;
+		for(int i = 0; i < treinos.size(); i++) {
+			if("terminado".equals(treinos.get(i).getStatus())) {
+				geralResistencia += treinos.get(i).GetResistencia();
+				cont+= 1;
 			}
 		}
-		
-		if(treinosFinalizados != 0) {
-			double media = geralResistencia / treinosFinalizados;
-			return media;
+		if(cont == 0) {
+			return 0;
 			
 		}else {
-			return 0;
+			double media = geralResistencia / cont;
+			return media;
+		
 		}
 	}
 
@@ -88,7 +88,7 @@ public class Corredor {
 	}
 				
 	public String getCpf() {
-		return this.cpf;
+		return cpf;
 	}
 	
 	@Override

@@ -20,8 +20,9 @@ public class ProgRunners {
 		// é um Corredor com nome, cpf e ano de nascimento
 		Corredor c = new Corredor(nome, cpf, anoDeNascimento);
 		
-		for(Corredor c1 : corredores) {
-			if(cpf.equals(c1.getCpf())){
+		//se quiser faz com for each que fica até mais bonitinho e legivel 
+		for (int i = 0 ; i < corredores.size(); i++){
+			if(cpf.equals(corredores.get(i).getCpf())){
 				throw new IllegalArgumentException("o corredor ja esta cadastrado");
 			}
 		}
@@ -40,16 +41,18 @@ public class ProgRunners {
 		return saida;
 	}
 	
-	public String exiberCategoriaCorredor(String cpf) {
-		for(Corredor c : corredores) {
-			if(cpf.equals(c.getCpf())){
-				return c.getCategoria();
+	public String exibirCategoriaCorredor(String cpf) {
+		
+		for(Corredor c : corredores) { 
+			if(cpf.equals(c.getCpf())){ 
+				return c.getCategoria(); 
 			}
 		}
+		 
 		throw new IllegalArgumentException("cpf nao cadastrado");
 	}
 	
-	public String exiberCorredor(String cpf) {
+	public String exibirCorredor(String cpf) {
 		for(Corredor c : corredores) {
 			if(cpf.equals(c.getCpf())){
 				return c.toString();
@@ -59,30 +62,31 @@ public class ProgRunners {
 	}
 	
 	public void cadastrarTreinoCorredor(String cpf, double distancia, int tempoEsperado, String descricao) {
-		for(Corredor c : corredores) {
-			if(cpf.equals(c.getCpf())){
-				c.cadastraTreino(distancia,tempoEsperado, descricao);
+		for (int i = 0 ; i < corredores.size(); i++){
+			if(cpf.equals(corredores.get(i).getCpf())){
+				corredores.get(i).cadastraTreino(distancia, tempoEsperado, descricao);
 			}
 		}
-		throw new IllegalArgumentException("cpf nao cadastrado");
+		
 	}
 	
 	public void finalizarTreino(String cpf, int indice, int tempoGasto) {
-		for(Corredor c : corredores) {
-			if(cpf.equals(c.getCpf())){
-				c.finalizarTreino(indice, tempoGasto);
+		for (int i = 0 ; i < corredores.size(); i++){
+			if(cpf.equals(corredores.get(i).getCpf())){
+				corredores.get(i).finalizarTreino(indice, tempoGasto);
 			}
 		}
-		throw new IllegalArgumentException("cpf nao cadastrado");
 	}
 	
 	public int contarTreinosFinalizadosCorredor(String cpf){
-		for(Corredor c : corredores) {
-			if(cpf.equals(c.getCpf())){
-				return c.treinosFinalizados();
+		int total = 0 ;
+		for (int i = 0 ; i < corredores.size(); i++){
+			if(cpf.equals(corredores.get(i).getCpf())){
+				 total =  corredores.get(i).treinosFinalizados();
 			}
 		}
-		throw new IllegalArgumentException("cpf nao cadastrado");
+		return total;
+		
 	}
 	
 	public double resistenciaCorredor(String cpf) {
